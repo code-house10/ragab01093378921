@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             background-size: cover;
         }
         
-        .service-card:hover, .location-card:hover, .gallery-item:hover { /* Added .gallery-item */
+        .service-card:hover, .location-card:hover, .gallery-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
@@ -63,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             position: fixed;
             bottom: 30px;
             left: 30px; 
-            z-index: 100;
+            z-index: 100; /* Ensure it's above most content but below modal */
             animation: pulse 2s infinite;
         }
 
@@ -136,18 +136,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-top:5px;
         }
 
-        /* Styles for the multi-step modal */
-        .modal-step {
-            display: none; /* Hidden by default */
+        /* Modal styles */
+        #universalModal [data-modal-content] { /* Updated selector for new modal ID */
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
         }
-        .modal-step.active {
-            display: block; /* Shown when active */
-        }
-        /* Ensure modal content is scrollable if it gets too long on small screens */
-        .modal-content-container {
-            max-height: 80vh; /* Adjust as needed */
-            overflow-y: auto;
-        }
+
     </style>
 </head>
 <body class="bg-gray-light">
@@ -157,10 +150,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="bg-white py-2 px-4 shadow-sm">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4 space-x-reverse">
-                <a href="#" class="text-gray-medium hover:text-primary flex items-center">
+                <a href="tel:01093378921" class="text-gray-medium hover:text-primary flex items-center">
                     <i class="fas fa-phone-alt text-secondary ml-1"></i>
-                    01093378921
+                    01093378921 
                 </a>
+              
             </div>
             <div class="flex items-center space-x-3 space-x-reverse">
                 <a href="#" class="text-primary hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
@@ -185,11 +179,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="#features" class="text-dark font-medium hover:text-primary">لماذا نحن</a>
                 <a href="#location-services" class="text-dark font-medium hover:text-primary">خدمات المناطق</a>
                 <a href="#testimonials" class="text-dark font-medium hover:text-primary">آراء العملاء</a>
-                <a href="tel:01093378921" class="text-dark font-medium hover:text-primary confirm-call-action">اتصل بنا</a>
+                <a href="tel:01093378921" class="text-dark font-medium hover:text-primary">اتصل بنا</a>
             </div>
             
             <div class="flex items-center space-x-4 space-x-reverse">
-                <a href="tel:01093378921" class="bg-primary text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300 confirm-call-action">اطلب عرض سعر</a>
+                <a href="tel:01093378921" class="bg-primary text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300">اطلب عرض سعر</a>
                 <button class="md:hidden text-primary" id="mobile-menu-button">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
@@ -205,14 +199,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="#features" class="block py-2 text-dark font-medium hover:bg-gray-light px-2 rounded">لماذا نحن</a>
                 <a href="#location-services" class="block py-2 text-dark font-medium hover:bg-gray-light px-2 rounded">خدمات المناطق</a>
                 <a href="#testimonials" class="block py-2 text-dark font-medium hover:bg-gray-light px-2 rounded">آراء العملاء</a>
-                <a href="tel:01093378921" class="block py-2 text-dark font-medium hover:bg-gray-light px-2 rounded confirm-call-action">اتصل بنا</a>
+                <a href="tel:01093378921" class="block py-2 text-dark font-medium hover:bg-gray-light px-2 rounded">اتصل بنا</a>
             </div>
         </div>
     </nav>
 
     <section class="relative">
         <div class="relative h-[600px] overflow-hidden">
-            <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/1711304224153.jpeg" alt="نقل عفش آمن وسريع" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1440x600/1e40af/ffffff?text=Hero+Image+Not+Found';">
+            <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/1711304224153.jpeg" alt="نقل عفش آمن وسريع" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-dark bg-opacity-60"></div>
             <div class="hero-overlay"></div>
             <div class="absolute inset-0 flex items-center">
@@ -221,8 +215,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">نقل عفش آمن وسريع في مدينتك</h1>
                         <p class="text-gray-100 text-lg mb-8">نوفّر ونش رفع العفش وطاقم مدرب. أسعار منافسة وخدمة موثوقة لنقل أثاثك بأمان تام.</p>
                         <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                            <a href="tel:01093378921" class="bg-secondary text-white px-8 py-3 rounded-full hover:bg-orange-600 transition duration-300 transform hover:-translate-y-1 text-lg font-semibold confirm-call-action">احجز الآن</a>
-                            <a href="tel:01093378921" class="bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300 transform hover:-translate-y-1 text-lg font-semibold confirm-call-action">خصم 25% اليوم</a>
+                            <a href="tel:01093378921" class="bg-secondary text-white px-8 py-3 rounded-full hover:bg-orange-600 transition duration-300 transform hover:-translate-y-1 text-lg font-semibold">احجز الآن</a>
+                            <a href="tel:01093378921" class="bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300 transform hover:-translate-y-1 text-lg font-semibold">خصم 25% اليوم</a>
                         </div>
                     </div>
                 </div>
@@ -239,31 +233,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300 flex flex-col items-center text-center">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="ونش رفع العفش" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x192/e0e0e0/333333?text=Service+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="ونش رفع العفش" class="w-full h-48 object-cover rounded-md mb-4">
                     <div class="bg-gray-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
                         <i class="fas fa-truck-ramp-box text-primary text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-primary mb-3">ونش رفع العفش لجميع الأدوار</h3>
                     <p class="text-gray-medium mb-4">نقل العفش بدون خدوش أو تلف. معدات حديثة وفريق محترف لرفع آمن لجميع أنواع الأثاث.</p>
-                    <a href="tel:01093378921" class="inline-block bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 mt-auto confirm-call-action">اطلب ونش الآن</a>
+                    <a href="tel:01093378921" class="inline-block bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 mt-auto">اطلب ونش الآن</a>
                 </div>
                 <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300 flex flex-col items-center text-center">
-                     <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/backing.webp" alt="تغليف العفش" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x192/e0e0e0/333333?text=Service+Image';">
+                     <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/backing.webp" alt="تغليف العفش" class="w-full h-48 object-cover rounded-md mb-4">
                     <div class="bg-gray-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
                         <i class="fas fa-box-open text-primary text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-primary mb-3">تغليف احترافي وحماية</h3>
                     <p class="text-gray-medium mb-4">نغلف وننقل ونركب أثاثك بكل أمان. استخدام خامات عالية الجودة لحماية الأثاث من أي ضرر.</p>
-                     <a href="tel:01093378921" class="inline-block bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 mt-auto confirm-call-action">احصل على تغليف آمن</a>
+                     <a href="tel:01093378921" class="inline-block bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 mt-auto">احصل على تغليف آمن</a>
                 </div>
                 <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300 flex flex-col items-center text-center">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="سيارات نقل عفش مجهزة" class="w-full h-48 object-cover rounded-md mb-4" onerror="this.onerror=null;this.src='https://placehold.co/400x192/e0e0e0/333333?text=Service+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="سيارات نقل عفش مجهزة" class="w-full h-48 object-cover rounded-md mb-4">
                     <div class="bg-gray-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
                         <i class="fas fa-truck text-primary text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-primary mb-3">سيارات نقل مجهزة</h3>
                     <p class="text-gray-medium mb-4">سيارات مغلقة ومجهزة لنقل الأثاث في أمان تام، لجميع مناطق داخل وخارج المدينة.</p>
-                    <a href="tel:01093378921" class="inline-block bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 mt-auto confirm-call-action">احجز سيارة نقل</a>
+                    <a href="tel:01093378921" class="inline-block bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 mt-auto">احجز سيارة نقل</a>
                 </div>
             </div>
         </div>
@@ -274,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
                     <div class="rounded-lg overflow-hidden shadow-lg">
-                        <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/6746326fe7d99.jpeg" alt="فريق شركة امان لنقل العفش" class="w-full h-auto object-cover" style="max-height: 450px;" onerror="this.onerror=null;this.src='https://placehold.co/600x450/e0e0e0/333333?text=About+Us+Image';">
+                        <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/6746326fe7d99.jpeg" alt="فريق شركة امان لنقل العفش" class="w-full h-auto object-cover" style="max-height: 450px;">
                     </div>
                     <div class="absolute -bottom-10 -right-10 bg-secondary rounded-full w-24 h-24 flex items-center justify-center shadow-lg hidden md:flex">
                         <i class="fas fa-shield-alt text-white text-3xl"></i>
@@ -314,7 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     </div>
                     
-                    <a href="tel:01093378921" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-block font-semibold confirm-call-action">اطلب استشارة مجانية</a>
+                    <a href="tel:01093378921" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-block font-semibold">اطلب استشارة مجانية</a>
                 </div>
             </div>
         </div>
@@ -362,7 +356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 	
-	   <section id="location-services" class="py-16 bg-gray-light"> 
+	<section id="location-services" class="py-16 bg-gray-light"> 
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-primary mb-4">خدمات نقل العفش في جميع أنحاء القاهرة والمحافظات</h2>
@@ -370,205 +364,206 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/nasr-city.webp" alt="نقل عفش في مدينة نصر" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/nasr-city.webp" alt="نقل عفش في مدينة نصر" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بمدينة نصر</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">هل تبحث عن شركة موثوقة لنقل العفش بمدينة نصر؟ نحن نوفر لك خدمة سريعة وآمنة باستخدام ونش كهربائي وتغليف احترافي. سياراتنا مجهزة لخدمة الأدوار العالية وضمان سلامة العفش.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في مصر الجديدة" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في مصر الجديدة" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بمصر الجديدة</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">في مصر الجديدة، نقدم لك خدمة راقية في نقل العفش تشمل فك وتركيب وتغليف كامل. فريقنا مدرّب على التعامل مع جميع أنواع الأثاث. راحة بالك تبدأ من هنا.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                            <span class="mr-2">اتصل الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
-                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(2).jpeg" alt="نقل عفش في التجمع الخامس" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(2).jpeg" alt="نقل عفش في التجمع الخامس" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالتجمع الخامس</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">خدمة نقل عفش مميزة في التجمع الخامس مع ونش رفع آمن وتغليف احترافي. التزامنا بالمواعيد وسرعة التنفيذ هما سبب ثقة العملاء بنا.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">للحجز: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(3).jpeg" alt="نقل عفش في مدينتي" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(3).jpeg" alt="نقل عفش في مدينتي" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بمدينتى</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">في مدينتي، ننقل لك أثاثك بأمان تام دون خدش أو كسر. سيارات مغلقة، عمالة مدربة، وخدمة ممتازة بأسعار مناسبة.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">احجز الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="نقل عفش في الرحاب" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="نقل عفش في الرحاب" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالرحاب</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">نقدم في الرحاب خدمة نقل عفش كاملة مع تغليف وفك وتركيب باستخدام أدوات احترافية. مناسب للشقق والفيلات.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">تواصل معنا: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش في الشيخ زايد" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش في الشيخ زايد" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالشيخ زايد</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">خدمة سريعة وآمنة بالشيخ زايد تشمل الونش الكهربائي والتغليف الكامل. نصل إليك خلال ساعة مع فريق جاهز للعمل.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                  <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في المعادي" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في المعادي" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالمعادى</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">لو كنت في المعادي وبتدور على شركة نقل عفش محترفة، إحنا بنوفر لك خدمة مضمونة وسريعة مع تغليف كامل وسيارات مجهزة.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">احجز الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                  <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="نقل عفش في حلوان" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="نقل عفش في حلوان" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بحلوان</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">معنا في حلوان، نقل العفش بقى أسهل وأسرع! تغليف شامل، ونش متوفر، وأسعار تناسب الجميع.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">كلمنا الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/6746326fe7d99.jpeg" alt="نقل عفش في المهندسين" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/6746326fe7d99.jpeg" alt="نقل عفش في المهندسين" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالمهندسين</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">نقل عفش آمن واحترافي في المهندسين مع فريق متخصص وأدوات متطورة. خليك مطمئن على كل قطعة في بيتك.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل على: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/28.jpg" alt="نقل عفش في الدقي" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/28.jpg" alt="نقل عفش في الدقي" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالدقى</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">عايز تنقل عفشك من وإلى الدقي؟ نوفر لك نقل شامل بأحدث الوسائل وبدون أي مجهود منك.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">للتواصل: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/backing.webp" alt="نقل عفش في العجوزة" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/backing.webp" alt="نقل عفش في العجوزة" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالعجوزة</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">خدمة ممتازة في العجوزة تشمل ونش كهربائي، سيارات مغلقة، وطاقم مدرب. كل ده بأفضل الأسعار.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                            <span class="mr-2">احجز الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/1711304224153.jpeg" alt="نقل عفش في شيراتون" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/1711304224153.jpeg" alt="نقل عفش في شيراتون" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بشيراتون</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">في شيراتون، نقل العفش مش بيحتاج تعب. وفر وقتك وخلي المهمة على فريقنا المختص.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل فورًا: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                  <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="نقل عفش في النزهة الجديدة" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="نقل عفش في النزهة الجديدة" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالنزهة الجديدة</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">خدمة فورية وآمنة لنقل العفش في النزهة الجديدة. نغلف، ننقل، ونركب بكل دقة وسرعة.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل بينا دلوقتي: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في جسر السويس" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في جسر السويس" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بجسر السويس</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">في جسر السويس بنوفر نقل عفش شامل من الباب للباب، بدون أي تلف أو تأخير.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">احجز الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(2).jpeg" alt="نقل عفش في المقطم" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(2).jpeg" alt="نقل عفش في المقطم" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">شركة نقل عفش بالمقطم</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">نقل عفش في المقطم بأحدث الوسائل. فريق محترف وسيارات حديثة لتلبية احتياجاتك في أي وقت.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">كلمنا فورًا: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(5).jpeg" alt="نقل عفش المعادي" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(5).jpeg" alt="نقل عفش المعادي" class="w-full h-56 object-cover">
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">نقل عفش المعادى</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">لو محتاج تنقل عفشك في المعادي، إحنا موجودين بخدمة سريعة وآمنة مع تغليف كامل وونش لجميع الأدوار.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">للحجز: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش الشيخ زايد" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';"> 
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش الشيخ زايد" class="w-full h-56 object-cover"> 
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">نقل عفش الشيخ زايد</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">نقل عفش داخل الشيخ زايد بكل سهولة. خدماتنا تشمل الرفع بالونش، والفك والتركيب، والتغليف الكامل.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل على: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="نقل عفش التجمع الخامس" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';"> 
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="نقل عفش التجمع الخامس" class="w-full h-56 object-cover"> 
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">نقل عفش التجمع الخامس</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">تنقل في التجمع الخامس بدون قلق! نضمن لك خدمة احترافية بأحدث الوسائل وبأقل تكلفة.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اطلب الخدمة الآن: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(3).jpeg" alt="نقل عفش العبور" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';"> 
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(3).jpeg" alt="نقل عفش العبور" class="w-full h-56 object-cover"> 
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">نقل عفش العبور</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">لو بتجهز لنقل عفش في العبور، تقدر تعتمد علينا. سيارات مغلقة، عمالة مدربة، وأسعار مغرية.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">كلمنا على: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
                 <div class="location-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 flex flex-col">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش اكتوبر" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x224/e0e0e0/333333?text=Location+Image';"> 
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش اكتوبر" class="w-full h-56 object-cover"> 
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-primary mb-3">نقل عفش اكتوبر</h3>
                         <p class="text-gray-medium mb-4 text-sm leading-relaxed flex-grow">في أكتوبر، نوفر خدمة نقل عفش كاملة تشمل كل التفاصيل – من التغليف للتركيب.</p>
-                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto confirm-call-action">
+                        <a href="tel:01093378921" class="inline-flex items-center justify-center bg-secondary text-white px-5 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold text-sm mt-auto">
                             <span class="mr-2">اتصل الآن واحجز: 01093378921</span><i class="fas fa-phone-alt"></i>
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -608,28 +603,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/1711304224153.jpeg" alt="صورة من اعمال نقل العفش 1" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/1711304224153.jpeg" alt="صورة من اعمال نقل العفش 1" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/28.jpg" alt="صورة من اعمال نقل العفش 2" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/28.jpg" alt="صورة من اعمال نقل العفش 2" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/6746326fe7d99.jpeg" alt="صورة من اعمال نقل العفش 3" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/6746326fe7d99.jpeg" alt="صورة من اعمال نقل العفش 3" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/backing.webp" alt="صورة من اعمال تغليف العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/backing.webp" alt="صورة من اعمال تغليف العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في القاهرة" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/cairo.webp" alt="نقل عفش في القاهرة" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="سيارة نقل عفش مجهزة" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(1).jpeg" alt="سيارة نقل عفش مجهزة" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(2).jpeg" alt="فريق عمل نقل العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(2).jpeg" alt="فريق عمل نقل العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(3).jpeg" alt="ادوات تغليف العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x256/e0e0e0/333333?text=Gallery+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(3).jpeg" alt="ادوات تغليف العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(4).jpeg" alt="ونش رفع الاثاث" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(5).jpeg" alt="عمال نقل العفش" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/nasr-city.webp" alt="نقل عفش في مدينة نصر" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="gallery-item rounded-lg shadow-lg overflow-hidden group cursor-pointer">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/october.webp" alt="نقل عفش في اكتوبر" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 </div>
             </div>
         </div>
@@ -647,7 +654,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="text-primary text-3xl mb-4"><i class="fas fa-quote-right"></i></div>
                     <p class="text-gray-dark mb-6">"خدمة نقل عفش ممتازة وفريق محترف جداً. قاموا بنقل أثاث منزلي بالكامل بعناية فائقة وفي وقت قياسي. سأتعامل معهم دائماً وأنصح الجميع بهم."</p>
                     <div class="flex items-center">
-                        <img src="https://placehold.co/48x48/e0e0e0/333333?text=User" alt="هاشم عودة" class="w-12 h-12 rounded-full ml-4 bg-gray-200">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROoaXpKSiqGUyG9LEqSluzgm6TT4nkvBpmHwxuw2HqAPBdLj2q&s" alt="هاشم عودة" class="w-12 h-12 rounded-full ml-4 bg-gray-200">
                         <div>
                             <h4 class="font-bold text-primary">هاشم عودة</h4>
                             <div class="flex text-yellow-400 mt-1"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -659,7 +666,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="text-primary text-3xl mb-4"><i class="fas fa-quote-right"></i></div>
                     <p class="text-gray-dark mb-6">"تعاملت مع شركة امان لنقل أثاث مكتبي وكانت النتيجة مبهرة. الفريق محترف والتزموا بالموعد المحدد. الأثاث وصل بدون أي خدش. سعيد جداً بالخدمة."</p>
                     <div class="flex items-center">
-                        <img src="https://placehold.co/48x48/e0e0e0/333333?text=User" alt="سارة محمود" class="w-12 h-12 rounded-full ml-4 bg-gray-200">
+                        <img src="https="encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbaX4SgfV0PsMOlWGnkDhn95SwXySfIrEUMYnO0PjeJJyL4pSP&s" alt="سارة محمود" class="w-12 h-12 rounded-full ml-4 bg-gray-200">
                         <div>
                             <h4 class="font-bold text-primary">سارة محمود</h4>
                             <div class="flex text-yellow-400 mt-1">
@@ -672,7 +679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="text-primary text-3xl mb-4"><i class="fas fa-quote-right"></i></div>
                     <p class="text-gray-dark mb-6">"قمت بالاستعانة بهم لنقل عفش شقتي الجديدة. كانوا في الموعد، والتغليف كان ممتازاً. الونش ساعد كثيراً في رفع القطع الكبيرة. أنصح بشدة بخدماتهم الموثوقة."</p>
                     <div class="flex items-center">
-                        <img src="https://placehold.co/48x48/e0e0e0/333333?text=User" alt="أحمد خالد" class="w-12 h-12 rounded-full ml-4 bg-gray-200">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC2gOtgrAcyt2841RSWk9PMWJUZm7QN6J-WuvGXuHHzyW6m0lT&s" alt="أحمد خالد" class="w-12 h-12 rounded-full ml-4 bg-gray-200">
                         <div>
                             <h4 class="font-bold text-primary">أحمد خالد</h4>
                             <div class="flex text-yellow-400 mt-1">
@@ -693,7 +700,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p class="text-gray-100 mb-8">نحن هنا للإجابة على جميع استفساراتك وتقديم عروض أسعار مجانية. اتصل بنا أو املأ النموذج للحصول على خدمة نقل عفش مضمونة وسريعة.</p>
                     
                      <div class="space-y-4 mb-8">
-                        <a href="tel:01093378921" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-gray-50 transition group confirm-call-action">
+                        <a href="tel:01093378921" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-gray-50 transition group">
                             <i class="fas fa-phone-alt text-secondary text-2xl ml-4 group-hover:animate-pulse"></i>
                             <div>
                                 <h4 class="text-lg font-semibold text-primary">اتصل بنا مباشرة</h4>
@@ -727,7 +734,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 
                 <div class="hidden md:flex justify-center items-center">
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(5).jpeg" alt="اتصل بنا لنقل العفش" class="rounded-lg shadow-xl object-cover" style="max-height: 500px;" onerror="this.onerror=null;this.src='https://placehold.co/500x500/e0e0e0/333333?text=Contact+Image';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/images(5).jpeg" alt="اتصل بنا لنقل العفش" class="rounded-lg shadow-xl object-cover" style="max-height: 500px;">
                 </div>
             </div>
         </div>
@@ -737,7 +744,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/logo.webp" alt="شعار امان لنقل العفش" class="h-16 mb-4" onerror="this.onerror=null;this.src='https://placehold.co/100x64/333333/ffffff?text=Logo';">
+                    <img src="https://raw.githubusercontent.com/code-house10/ragab_hemaid_images/refs/heads/main/logo.webp" alt="شعار امان لنقل العفش" class="h-16 mb-4">
                     <p class="text-gray-300 mb-4 text-sm">شركة "امان لنقل العفش" رائدة في مجال نقل الأثاث بخبرة تمتد لسنوات. نقدم خدمات نقل احترافية، آمنة، وسريعة بأسعار تنافسية. راحتك وثقة أثاثك هي أولويتنا.</p>
                     <div class="flex space-x-3 space-x-reverse">
                         <a href="#" class="text-gray-300 hover:text-primary text-xl"><i class="fab fa-facebook-f"></i></a>
@@ -757,7 +764,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li><a href="#features" class="text-gray-300 hover:text-primary transition">لماذا تختارنا</a></li>
                         <li><a href="#location-services" class="text-gray-300 hover:text-primary transition">خدمات المناطق</a></li>
                         <li><a href="#testimonials" class="text-gray-300 hover:text-primary transition">آراء العملاء</a></li>
-                        <li><a href="tel:01093378921" class="text-gray-300 hover:text-primary transition confirm-call-action">اتصل بنا</a></li>
+                        <li><a href="tel:01093378921" class="text-gray-300 hover:text-primary transition">اتصل بنا</a></li>
                     </ul>
                 </div>
                 
@@ -787,83 +794,161 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div>
                     <h3 class="text-white text-xl font-bold mb-6">هل أنت جاهز للنقل؟</h3>
                     <p class="text-gray-300 mb-4 text-sm">احصل على استشارة مجانية وعرض سعر مخصص لاحتياجاتك. فريقنا جاهز لمساعدتك في أي وقت.</p>
-                    <a href="tel:01093378921" class="bg-secondary text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 transition duration-300 inline-block w-full text-center confirm-call-action">اطلب عرض سعر الآن</a>
+                    <a href="tel:01093378921" class="bg-secondary text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 transition duration-300 inline-block w-full text-center">اطلب عرض سعر الآن</a>
                 </div>
             </div>
             
             <hr class="border-gray-800 mb-6">
             
             <div class="text-center">
-                <p class="text-gray-400 text-sm">© 2024 امان لنقل العفش. جميع الحقوق محفوظة.</p>
+                <p class="text-gray-400 text-sm">&copy; 2024 امان لنقل العفش. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <a href="tel:01093378921" class="floating-button bg-primary text-white rounded-full p-4 flex items-center justify-center shadow-xl w-auto confirm-call-action" title="اتصل بنا الآن: 01093378921">
+    <a href="tel:01093378921" class="floating-button bg-primary text-white rounded-full p-4 flex items-center justify-center shadow-xl w-auto" title="اتصل بنا الآن: 01093378921">
         <i class="fas fa-phone-alt text-xl"></i>
         <span class="font-bold mr-2">01093378921</span>
     </a>
 
-    <div id="enhancedCallModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center hidden z-[1000]" aria-labelledby="modal-title-step1" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="bg-white p-5 sm:p-8 rounded-lg shadow-xl w-11/12 max-w-lg mx-auto modal-content-container">
-            <div id="modalStep1" class="modal-step active">
-                <h3 id="modal-title-step1" class="text-xl sm:text-2xl font-bold text-primary mb-4 text-center">قبل الاتصال</h3>
-                <p class="text-gray-medium mb-6 text-center">يرجى تحديد سبب مكالمتك لنتمكن من خدمتك بشكل أفضل:</p>
-                <div class="space-y-3 mb-6">
-                    <div>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                            <input type="radio" name="callReason" value="طلب عرض سعر لنقل العفش" class="ml-3 h-5 w-5 text-secondary focus:ring-secondary border-gray-300">
-                            <span class="text-gray-700">طلب عرض سعر لنقل العفش</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                            <input type="radio" name="callReason" value="استفسار عن خدمات نقل العفش " class="ml-3 h-5 w-5 text-secondary focus:ring-secondary border-gray-300">
-                            <span class="text-gray-700">استفسار عن خدمات نقل العفش </span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                            <input type="radio" name="callReason" value="طلب خدمة نقل عفش عاجلة" class="ml-3 h-5 w-5 text-secondary focus:ring-secondary border-gray-300">
-                            <span class="text-gray-700">طلب خدمة نقل عفش عاجلة</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="flex items-center p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
-                            <input type="radio" name="callReason" value="سؤال عام" class="ml-3 h-5 w-5 text-secondary focus:ring-secondary border-gray-300">
-                            <span class="text-gray-700">سؤال عام</span>
-                        </label>
+    <div id="universalModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 z-[1000] hidden" dir="rtl">
+        <div data-modal-content class="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md text-center transform transition-all duration-300 ease-out scale-95 opacity-0">
+            <div id="modalStepContainer">
+                <div id="universalInitialQuestion" class="hidden"> <p class="text-lg font-semibold text-primary mb-3 text-center">طلب خدمة نقل الأثاث</p>
+                    <p class="text-gray-700 mb-4 text-sm text-center">هل أنت جاد في طلب خدمة نقل الأثاث الآن وترغب في التحدث إلينا؟</p>
+                    <div class="flex flex-col sm:flex-row justify-around gap-3">
+                        <button id="universalConfirmCallBtn" class="bg-secondary hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm transition duration-300 w-full sm:w-auto">نعم، أريد الاتصال</button>
+                        <button id="universalCancelCallBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg text-sm transition duration-300 w-full sm:w-auto">لا، أتصفح فقط</button>
                     </div>
                 </div>
-                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                    <button id="nextToStep2Button" class="w-full sm:w-auto bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 font-semibold disabled:opacity-50 disabled:cursor-not-allowed" disabled>التالي</button>
-                    <button id="cancelCallModalStep1" class="w-full sm:w-auto bg-gray-300 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-400 transition duration-300 font-semibold">إلغاء</button>
-                </div>
-            </div>
-
-            <div id="modalStep2" class="modal-step">
-                <h3 id="modal-title-step2" class="text-xl sm:text-2xl font-bold text-primary mb-4 text-center">تأكيد الاتصال</h3>
-                <p class="text-gray-medium mb-2 text-center">أنت على وشك الاتصال بنا بخصوص:</p>
-                <p id="selectedCallReasonText" class="text-secondary font-semibold mb-6 text-center"></p>
-                
-                <div class="mb-6">
-                    <label for="confirmReadinessCheckbox" class="flex items-center text-gray-700 cursor-pointer">
-                        <input type="checkbox" id="confirmReadinessCheckbox" class="ml-3 h-5 w-5 text-secondary focus:ring-secondary border-gray-300 rounded">
-                        <span class="text-sm sm:text-base">أؤكد أنني مستعد للتحدث مع مسئول نقل العفش الآن.</span>
-                    </label>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                    <button id="finalConfirmCallButton" class="w-full sm:w-auto bg-secondary text-white px-6 py-3 rounded-full hover:bg-orange-600 transition duration-300 font-semibold disabled:opacity-50 disabled:cursor-not-allowed" disabled>نعم، اتصل الآن</button>
-                    <button id="backToStep1Button" class="w-full sm:w-auto bg-gray-200 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-300 transition duration-300 font-semibold">رجوع</button>
-                    <button id="cancelCallModalStep2" class="w-full sm:w-auto bg-gray-400 text-gray-800 px-6 py-3 rounded-full hover:bg-gray-500 transition duration-300 font-semibold">إلغاء</button>
+                <div id="universalCallAction" class="text-center hidden"> <p class="text-lg font-semibold text-primary mb-3">اتصل بنا مباشرة!</p>
+                    <a href="" id="universalDirectCallLink" class="block w-full bg-secondary hover:bg-orange-600 text-white px-6 py-3 rounded-lg text-lg transition duration-300 font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="vertical-align: middle;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        <span id="universalCallLinkText"></span> </a>
+                    <button id="universalCloseModalFinal" class="mt-4 text-sm text-gray-500 hover:text-gray-700 underline">إغلاق</button>
                 </div>
             </div>
         </div>
     </div>
 
-
     <script>
-        // Standard Mobile Menu Toggle & Smooth Scroll (from original file)
+        // ----- START: Universal Call Confirmation Modal Logic -----
+        document.addEventListener('DOMContentLoaded', () => {
+            const universalModal = document.getElementById('universalModal');
+            const modalContent = universalModal ? universalModal.querySelector('[data-modal-content]') : null;
+            
+            const initialQuestionDiv = document.getElementById('universalInitialQuestion');
+            const callActionDiv = document.getElementById('universalCallAction');
+            
+            const confirmCallBtn = document.getElementById('universalConfirmCallBtn');
+            const cancelCallBtn = document.getElementById('universalCancelCallBtn');
+            const directCallLink = document.getElementById('universalDirectCallLink');
+            const callLinkTextSpan = document.getElementById('universalCallLinkText'); // Span for the phone number text
+            const closeModalFinalBtn = document.getElementById('universalCloseModalFinal');
+
+            let currentPhoneNumberForUniversalModal = '';
+
+            function showUniversalModal(phoneNumber) {
+                if (universalModal && modalContent && initialQuestionDiv && callActionDiv && directCallLink && callLinkTextSpan) {
+                    currentPhoneNumberForUniversalModal = phoneNumber;
+                    
+                    // Set phone number for the direct call link
+                    directCallLink.href = 'tel:' + currentPhoneNumberForUniversalModal;
+                    callLinkTextSpan.textContent = currentPhoneNumberForUniversalModal; // Display the phone number
+
+                    // Reset to initial state: show question, hide call action
+                    initialQuestionDiv.classList.remove('hidden');
+                    callActionDiv.classList.add('hidden');
+                    
+                    universalModal.classList.remove('hidden');
+                    void universalModal.offsetWidth; // Force reflow for transition
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                } else {
+                    console.error("Modal elements not found for universal modal.");
+                }
+            }
+
+            function hideUniversalModal() {
+                if (universalModal && modalContent) {
+                    modalContent.classList.remove('scale-100', 'opacity-100');
+                    modalContent.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        universalModal.classList.add('hidden');
+                    }, 300); // Duration should match CSS transition
+                }
+            }
+
+            // Attach to all 'tel:' links
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                const telHref = link.href;
+                const phoneNumber = telHref.substring(4); // Extract phone number
+                
+                link.dataset.tel = phoneNumber; // Store phone number
+                link.href = '#_universal_call_confirm'; // Change href to prevent direct call
+
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default anchor action
+                    const phoneNumberToCall = event.currentTarget.dataset.tel;
+                    showUniversalModal(phoneNumberToCall);
+                });
+            });
+
+            // Event listener for "نعم، أريد الاتصال"
+            if (confirmCallBtn) {
+                confirmCallBtn.addEventListener('click', () => {
+                    if (initialQuestionDiv && callActionDiv) {
+                        initialQuestionDiv.classList.add('hidden');
+                        callActionDiv.classList.remove('hidden');
+                    }
+                });
+            }
+
+            // Event listener for "لا، أتصفح فقط"
+            if (cancelCallBtn) {
+                cancelCallBtn.addEventListener('click', () => {
+                    hideUniversalModal();
+                });
+            }
+
+            // Event listener for the final "إغلاق" button
+            if (closeModalFinalBtn) {
+                closeModalFinalBtn.addEventListener('click', () => {
+                    hideUniversalModal();
+                });
+            }
+            
+            // The directCallLink is an <a> tag, its default behavior will initiate the call.
+            // Optionally, hide modal after click if desired, though OS might take over.
+            if(directCallLink) {
+                directCallLink.addEventListener('click', () => {
+                    // Small delay to allow call initiation before hiding
+                    setTimeout(hideUniversalModal, 100); 
+                });
+            }
+
+
+            // Event listener to close modal if clicked outside
+            if (universalModal) {
+                universalModal.addEventListener('click', function(event) {
+                    if (event.target === universalModal) {
+                        hideUniversalModal();
+                    }
+                });
+            }
+            
+            // Event listener for Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && universalModal && !universalModal.classList.contains('hidden')) {
+                    hideUniversalModal();
+                }
+            });
+        });
+        // ----- END: Universal Call Confirmation Modal Logic -----
+
+        // ----- START: Existing Mobile Menu and Smooth Scroll Logic -----
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -875,177 +960,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const mobileLinks = mobileMenu.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
+                    // Check if it's the new modal trigger link
+                    if (!link.dataset.tel && link.getAttribute('href') !== '#_universal_call_confirm') { 
+                         mobileMenu.classList.add('hidden');
+                    }
                 });
             });
         }
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') { 
+                const hrefAttribute = this.getAttribute('href');
+
+                // If it's our modified call link, the other event listener already handled preventDefault.
+                if (hrefAttribute === '#_universal_call_confirm' || this.dataset.tel) { 
+                    return; 
+                }
+
+                if (hrefAttribute === '#') { 
+                    e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     return;
                 }
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerOffset = 80; // Height of the sticky header
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Enhanced Call Modal Script
-        document.addEventListener('DOMContentLoaded', function() {
-            const enhancedCallModal = document.getElementById('enhancedCallModal');
-            if (!enhancedCallModal) {
-                console.error('Enhanced call modal element not found!');
-                return;
-            }
-
-            const modalStep1 = document.getElementById('modalStep1');
-            const modalStep2 = document.getElementById('modalStep2');
-
-            const callReasonRadios = document.querySelectorAll('input[name="callReason"]');
-            const nextToStep2Button = document.getElementById('nextToStep2Button');
-            
-            const confirmReadinessCheckbox = document.getElementById('confirmReadinessCheckbox');
-            const finalConfirmCallButton = document.getElementById('finalConfirmCallButton');
-            
-            const cancelCallModalStep1 = document.getElementById('cancelCallModalStep1');
-            const cancelCallModalStep2 = document.getElementById('cancelCallModalStep2');
-            const backToStep1Button = document.getElementById('backToStep1Button');
-            const selectedCallReasonText = document.getElementById('selectedCallReasonText');
-
-            let callHref = ''; // To store the href of the clicked call link
-            let originalTriggerElement = null; // To store the element that opened the modal for focus return
-
-            // Check if all modal elements are present
-            if (!modalStep1 || !modalStep2 || !nextToStep2Button || !confirmReadinessCheckbox || !finalConfirmCallButton || !cancelCallModalStep1 || !cancelCallModalStep2 || !backToStep1Button || !selectedCallReasonText) {
-                console.error('One or more modal sub-elements are missing. Please check IDs.');
-                return;
-            }
-
-            // Function to open the modal
-            function openModal(event) {
-                event.preventDefault(); // Prevent default link action
-                originalTriggerElement = event.currentTarget; // Store the element that triggered the modal
-                callHref = originalTriggerElement.href;
-                
-                // Reset to Step 1
-                modalStep1.classList.add('active');
-                modalStep1.setAttribute('aria-hidden', 'false');
-                modalStep2.classList.remove('active');
-                modalStep2.setAttribute('aria-hidden', 'true');
-                
-                // Reset Step 1 form
-                callReasonRadios.forEach(radio => radio.checked = false);
-                nextToStep2Button.disabled = true;
-                
-                // Reset Step 2 form
-                confirmReadinessCheckbox.checked = false;
-                finalConfirmCallButton.disabled = true;
-                selectedCallReasonText.textContent = '';
-
-                enhancedCallModal.classList.remove('hidden');
-                enhancedCallModal.setAttribute('aria-hidden', 'false');
-                // Focus on the first focusable element in the modal (e.g., the first radio or the cancel button)
-                const firstFocusableElement = modalStep1.querySelector('input[name="callReason"], button');
-                 if(firstFocusableElement) firstFocusableElement.focus();
-            }
-
-            // Function to close the modal
-            function closeModal() {
-                enhancedCallModal.classList.add('hidden');
-                enhancedCallModal.setAttribute('aria-hidden', 'true');
-                callHref = '';
-                // Return focus to the element that opened the modal
-                if (originalTriggerElement) {
-                    originalTriggerElement.focus();
-                    originalTriggerElement = null; 
-                }
-            }
-
-            // Attach event listeners to all designated call links
-            const callLinks = document.querySelectorAll('a.confirm-call-action[href^="tel:"]');
-            callLinks.forEach(link => {
-                link.addEventListener('click', openModal);
-            });
-
-            // Step 1: Enable "Next" button when a reason is selected
-            callReasonRadios.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    if (document.querySelector('input[name="callReason"]:checked')) {
-                        nextToStep2Button.disabled = false;
-                    } else {
-                        nextToStep2Button.disabled = true;
+                // Check if it's an internal link to an ID (e.g., #about, #services)
+                if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
+                    try {
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault(); 
+                            const offsetTop = targetElement.offsetTop - 80; // Navbar offset
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                            // If in mobile menu, close it
+                            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                                mobileMenu.classList.add('hidden');
+                            }
+                        }
+                    } catch (error) {
+                        // If querySelector fails (e.g. invalid selector), let browser handle default
+                        console.warn('Smooth scroll target not found or invalid selector:', hrefAttribute, error);
                     }
-                });
-            });
-
-            // Step 1: "Next" button action
-            nextToStep2Button.addEventListener('click', () => {
-                const selectedReason = document.querySelector('input[name="callReason"]:checked');
-                if (selectedReason) {
-                    selectedCallReasonText.textContent = selectedReason.value;
-                    modalStep1.classList.remove('active');
-                    modalStep1.setAttribute('aria-hidden', 'true');
-                    modalStep2.classList.add('active');
-                    modalStep2.setAttribute('aria-hidden', 'false');
-                    confirmReadinessCheckbox.focus(); // Focus on checkbox in step 2
-                }
-            });
-            
-            // Step 2: Enable "Confirm Call" button when checkbox is ticked
-            confirmReadinessCheckbox.addEventListener('change', () => {
-                finalConfirmCallButton.disabled = !confirmReadinessCheckbox.checked;
-            });
-
-            // Step 2: "Confirm Call" button action
-            finalConfirmCallButton.addEventListener('click', () => {
-                if (callHref && confirmReadinessCheckbox.checked) {
-                    window.location.href = callHref; // Proceed with the call
-                }
-                closeModal();
-            });
-
-            // "Back" button from Step 2 to Step 1
-            backToStep1Button.addEventListener('click', () => {
-                modalStep2.classList.remove('active');
-                modalStep2.setAttribute('aria-hidden', 'true');
-                modalStep1.classList.add('active');
-                modalStep1.setAttribute('aria-hidden', 'false');
-                 // Focus on the first focusable element in step 1
-                const firstFocusableInStep1 = modalStep1.querySelector('input[name="callReason"], button');
-                if(firstFocusableInStep1) firstFocusableInStep1.focus();
-            });
-
-            // Cancel buttons
-            cancelCallModalStep1.addEventListener('click', closeModal);
-            cancelCallModalStep2.addEventListener('click', closeModal);
-
-            // Close modal if clicked outside (on the overlay)
-            enhancedCallModal.addEventListener('click', function(event) {
-                if (event.target === enhancedCallModal) {
-                    closeModal();
-                }
-            });
-
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && !enhancedCallModal.classList.contains('hidden')) {
-                    closeModal();
                 }
             });
         });
+        // ----- END: Existing Mobile Menu and Smooth Scroll Logic -----
     </script>
-
 </body>
 </html>
